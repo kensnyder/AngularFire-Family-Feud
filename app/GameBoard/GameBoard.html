@@ -1,0 +1,34 @@
+<div id="GameBoard">
+	<h1 class="question-text" ng-class="{visible:progress.questionVisible}">{{questions[progress.questionIndex].text}}</h1>
+
+	<div class="scores">
+		<div class="score score-side score-left">{{progress.scoreLeft}}</div>
+		<div class="score score-top">{{progress.scoreTop}}</div>	
+		<div class="score score-side score-right">{{progress.scoreRight}}</div>
+	</div>
+
+	<div class="redxs redxs-left">
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft0}">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft1}">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft2}">X</div>
+	</div>
+
+	<div class="redxs redxs-right">
+		<div class="redx" ng-class="{'redx-on':progress.redxRight0}">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight1}">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight2}">X</div>
+	</div>
+
+	<div class="answers">
+
+		<div class="host-answers" ng-repeat="q in questions" ng-if="progress.questionIndex == $index">
+			<div class="card-container" ng-repeat="a in q.answers">
+				<div class="card" ng-class="{flipped:progress.flipped.charAt($index)=='o'}">
+					<div class="card-face card-front"><span class="answer-num">{{$index+1}}</span></div>
+					<div class="card-face card-back">{{a.text}}</div>
+				</div>
+			</div>		
+		</div>
+
+	</div>
+</div>

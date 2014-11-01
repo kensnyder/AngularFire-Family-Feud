@@ -1,0 +1,37 @@
+<div id="HostBoard">
+	<h1 class="question-text">{{question.text}}</h1>
+
+	<div class="scores">
+		<div class="score score-side score-left"><input ng-model="progress.scoreLeft"></div>
+		<div class="push-points-left" ng-click="pushScore('Left')">&lt;</div>
+		<div class="score score-top"><input ng-model="progress.scoreTop"></div>	
+		<div class="push-points-right" ng-click="pushScore('Right')">&gt;</div>
+		<div class="score score-side score-right"><input ng-model="progress.scoreRight"></div>
+	</div>
+
+	<div class="redxs redxs-left">
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft0}" ng-click="toggleX('Left0')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft1}" ng-click="toggleX('Left1')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft2}" ng-click="toggleX('Left2')">X</div>
+	</div>
+
+	<div class="redxs redxs-right">
+		<div class="redx" ng-class="{'redx-on':progress.redxRight0}" ng-click="toggleX('Right0')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight1}" ng-click="toggleX('Right1')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight2}" ng-click="toggleX('Right2')">X</div>
+	</div>
+
+	<div class="answers">
+
+		<div class="host-answers">
+			<div class="host-answer" ng-repeat="a in question.answers" ng-class="{flipped:progress.flipped.charAt($index)=='o'}" ng-click="flip($index)">
+				<span class="host-text">{{a.text}}</span>
+				<span class="host-points">{{a.points}}</span>
+			</div>
+		</div>
+
+	</div>
+
+	<button ng-click="nav(-1)">&laquo; prev question</button>
+	<button ng-click="nav(1)">next question &raquo;</button>
+</div>
