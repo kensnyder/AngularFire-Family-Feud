@@ -48,6 +48,7 @@ h1 {
 }
 #GameBoard .redx {
 	font: 40px/84% Oswald;
+	-webkit-transform: scaleX(1.3);
 	transform: scaleX(1.3);
 	display: inline-block;
 	color: #d00;
@@ -56,10 +57,13 @@ h1 {
 	border-right-width: 4px;
 	margin-right: 17px;
 }
-/*.redx-on {
+.redx:hover {
+	cursor: pointer;
+}
+.redx-on {
 	color: red;
 	border-color: red;
-}*/
+}
 #GameBoard {
 	background-color: #ddd;
 	padding: 10px;
@@ -98,11 +102,25 @@ h1 {
 #GameBoard.board-type-game .question-text.visible {
 	visibility: visible;
 }
-#GameBoard .redx {
+#GameBoard.board-type-wizard .question-text {
+	color: #999;
+}
+#GameBoard.board-type-wizard .question-text.visible {
+	color: #000;
+}
+#GameBoard.board-type-game .redx {
 	visibility: hidden;
 }
-#GameBoard .redx.redx-on {
+#GameBoard.board-type-game .redx.redx-on {
 	visibility: visible;
+}
+#GameBoard.board-type-wizard .redx {
+	color: #aaa;
+	border-color: #aaa;
+}
+#GameBoard.board-type-wizard .redx.redx-on {
+	color: #d00;
+	border-color: #d00;
 }
 #GameBoard .score {
 	position: absolute;
@@ -120,8 +138,28 @@ h1 {
 	color: #fff;
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.7) inset;
 	text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+	-webkit-transform: scaleX(1.5);
 	transform: scaleX(1.5);
+	-webkit-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
+}
+#GameBoard .score .field-input input {
+	background: transparent;
+	color: #fff;
+	font: 40px/40px Oswald;
+	border: none;
+	text-align: center;
+	width: 100px;
+	height: 70px;
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+}
+#GameBoard .score .field-input input:hover,
+#GameBoard .score .field-input input:focus {
+	background: #fff;
+	color: #000;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) inset;
 }
 #GameBoard .score-side {
 	left: 53px;
@@ -133,6 +171,11 @@ h1 {
 	border-width: 4px;
 	border-right-width: 3px;
 	border-left-width: 3px;	
+}
+#GameBoard .score-side .field-input input {
+	font: 40px/40px Oswald;
+	width: 90px;
+	height: 60px;
 }
 #GameBoard .score-right {
 	left: auto;
@@ -146,7 +189,22 @@ h1 {
 	color: #182F98;
 }
 #GameBoard .team-b {
+	left: auto;
 	right: 33px;
+	text-align: right;
+}
+#GameBoard .team input {
+	font: 25px/15px Oswald;
+	padding: 8px 12px;
+	border: 2px solid #bbb;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) inset;
+	width: 260px;
+}
+#GameBoard .team input:hover,
+#GameBoard .team input:focus {
+	border-color: #000;
+}
+#GameBoard .team-b input {
 	text-align: right;
 }
 .card-text {
@@ -157,6 +215,7 @@ h1 {
 	padding-left: 8px;
 	height: 80px;
 	width: 200%;
+	-webkit-transform-origin: 0 0;
 	transform-origin: 0 0;
 }
 .card-points {	
@@ -170,11 +229,11 @@ h1 {
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.7) inset;
 	text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
-.sqeeze-10 { transform: scaleX(0.90); font-size: 38px; }
-.sqeeze-20 { transform: scaleX(0.81); font-size: 36px; }
-.sqeeze-30 { transform: scaleX(0.71); font-size: 34px; }
-.sqeeze-40 { transform: scaleX(0.63); font-size: 32px; }
-.sqeeze-50 { transform: scaleX(0.54); font-size: 32px; }
+.sqeeze-10 { transform: scaleX(0.90); -webkit-transform: scaleX(0.90); font-size: 38px; }
+.sqeeze-20 { transform: scaleX(0.81); -webkit-transform: scaleX(0.81); font-size: 36px; }
+.sqeeze-30 { transform: scaleX(0.71); -webkit-transform: scaleX(0.71); font-size: 34px; }
+.sqeeze-40 { transform: scaleX(0.63); -webkit-transform: scaleX(0.63); font-size: 32px; }
+.sqeeze-50 { transform: scaleX(0.54); -webkit-transform: scaleX(0.54); font-size: 32px; }
 .card-container {
 	float: left;
 	clear: left;
@@ -206,8 +265,6 @@ h1 {
 	background-color: #333;
 	color: #eee;	
 	border: 8px solid #201F78;
-	border-right: 8px solid #6498E0;
-	border-bottom: 8px solid #6498E0;
 	font-size: 40px;
 	line-height: 80px;
 	text-align: center;
@@ -257,4 +314,48 @@ h1 {
 	border-left-color: #aaa;
 	text-shadow: none;
 	box-shadow: none;
+}
+.push-points {
+	position: absolute;
+	top: 115px;
+	left: 350px;
+	font-size: 60px;
+	line-height: 55px;
+	color: #bbb;
+	height: 70px;
+	width: 70px;
+	background-color: #fff;
+	border: 3px solid #bbb;
+	border-radius: 8px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.push-points:hover {
+	color: #666;
+	border-color: #666;
+}
+.push-points-right {
+	left: 610px;
+}
+.nav-area {
+	position: absolute;
+	top: 240px;
+	left: 220px;
+	text-align: center;
+	width: 600px;
+}
+.nav {
+	margin: 0 6px;
+	font: 30px/30px Oswald;
+	color: #bbb;
+	background-color: #fff;
+	border: 3px solid #bbb;	
+	padding: 10px 20px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+.nav:hover {
+	color: #666;
+	border-color: #666;
 }

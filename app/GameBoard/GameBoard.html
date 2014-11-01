@@ -1,8 +1,6 @@
 <div id="GameBoard" class="{{boardType}}">
-	<button class="nav" ng-click="nav(-1)">&laquo; prev question</button>
-	<button class="nav" ng-click="nav(1)">next question &raquo;</button>	
-	
-	<h1 class="question-text" ng-class="{visible:progress.questionVisible}">{{questions[progress.questionIndex].text}}</h1>
+
+	<h1 class="question-text" ng-class="{visible:progress.questionVisible}" ng-click="toggleQuestionVisibility()">{{questions[progress.questionIndex].text}}</h1>
 
 	<div class="scores">
 		<div class="score score-side score-left">
@@ -44,6 +42,11 @@
 		<div class="redx" ng-class="{'redx-on':progress.redxRight2}" ng-click="toggleX('Right2')">X</div>
 	</div>
 
+	<div class="nav-area">		
+		<button class="nav nav-left" ng-click="nav(-1)">&laquo; prev question</button>
+		<button class="nav nav-right" ng-click="nav(1)">next question &raquo;</button>	
+	</div>	
+	
 	<div class="answer-wrapper">
 
 		<div class="game-answers" ng-repeat="q in questions" ng-if="progress.questionIndex == $index">
