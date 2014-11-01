@@ -6,17 +6,17 @@
 
 	<div class="scores">
 		<div class="score score-side score-left">
-			<span class="field-input"><input ng-model="progress.scoreLeft"></span>
+			<span class="field-input"><input ng-model="progress.scoreLeft" ng-blur="save()"></span>
 			<span class="field-display">{{progress.scoreLeft}}</span>
 		</div>
 		<div class="push-points push-points-left" ng-click="pushScore('Left')">&lt;</div>
 		<div class="score score-top">
-			<span class="field-input"><input ng-model="progress.scoreTop"></span>
+			<span class="field-input"><input ng-model="progress.scoreTop" ng-blur="save()"></span>
 			<span class="field-display">{{progress.scoreTop}}</span>
 		</div>
 		<div class="push-points push-points-right" ng-click="pushScore('Right')">&gt;</div>
 		<div class="score score-side score-right">
-			<span class="field-input"><input ng-model="progress.scoreRight"></span>
+			<span class="field-input"><input ng-model="progress.scoreRight" ng-blur="save()"></span>
 			<span class="field-display">{{progress.scoreRight}}</span>
 		</div>
 	</div>

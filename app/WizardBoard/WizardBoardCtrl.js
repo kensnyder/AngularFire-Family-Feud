@@ -6,18 +6,18 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 	$scope.progress = sync.$asObject();
 	
 	function setupBoard() {
-		$scope.progress.flipped = '--------';
-		$scope.progress.scoreTop = 0;
-		$scope.progress.scoreLeft = 0;
-		$scope.progress.scoreRight = 0;
+		$scope.progress.flipped = $scope.progress.flipped || '--------';
+		$scope.progress.scoreTop = $scope.progress.scoreTop || 0;
+		$scope.progress.scoreLeft = $scope.progress.scoreLeft || 0;
+		$scope.progress.scoreRight = $scope.progress.scoreRight || 0;
 		$scope.progress.questionIndex = $scope.progress.questionIndex || 0;
-		$scope.progress.redxLeft0 = false;
-		$scope.progress.redxLeft1 = false;
-		$scope.progress.redxLeft2 = false;
-		$scope.progress.redxRight0 = false;
-		$scope.progress.redxRight1 = false;
-		$scope.progress.redxRight2 = false;
-		$scope.progress.questionVisible = false;
+		$scope.progress.redxLeft0 = $scope.progress.redxLeft0 || false;
+		$scope.progress.redxLeft1 = $scope.progress.redxLeft1 || false;
+		$scope.progress.redxLeft2 = $scope.progress.redxLeft2 || false;
+		$scope.progress.redxRight0 = $scope.progress.redxRight0 || false;
+		$scope.progress.redxRight1 = $scope.progress.redxRight1 || false;
+		$scope.progress.redxRight2 = $scope.progress.redxRight2 || false;
+		$scope.progress.questionVisible = $scope.progress.questionVisible || false;
 		$scope.progress.teamLeft = $scope.progress.teamLeft || 'Team A';
 		$scope.progress.teamRight = $scope.progress.teamRight || 'Team B';
 		$scope.question = questions[$scope.progress.questionIndex];
@@ -31,7 +31,7 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 		$scope.progress.flipped = f.substring(0,position) + newState + f.substring(position+1);
 		if (!$scope.progress.stolen) {
 			var multiplier = (newState == 'o' ? 1 : -1);
-			$scope.progress.scoreTop = $scope.progress.scoreTop + multiplier * $scope.question.answers[position].points;
+			$scope.progress.scoreTop = parseFloat($scope.progress.scoreTop) + multiplier * $scope.question.answers[position].points;
 		}
 		$scope.progress.$save();
 	};
@@ -39,7 +39,7 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 		$scope.progress.questionVisible = !$scope.progress.questionVisible;
 	};
 	$scope.pushScore = function pushScore(direction) {
-		$scope.progress['score' + direction] += $scope.progress.scoreTop;
+		$scope.progress['score' + direction] += parseFloat($scope.progress.scoreTop);
 		$scope.progress.scoreTop = 0;
 		$scope.progress.$save();
 	};
@@ -58,6 +58,9 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 		else {
 			setupBoard();
 		}
+	};
+	$scope.save = function save() {
+		$scope.progress.$save();
 	};
 
 });
