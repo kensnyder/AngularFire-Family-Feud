@@ -1,7 +1,7 @@
 var app = angular.module("feud", ["firebase", "ngRoute"]);
 
 var resolver = {
-	questions: function() { return app.questions; }
+	questions: function() { return questions; }
 };
 
 app.config(['$routeProvider', function appConfig($routeProvider) {
@@ -16,8 +16,8 @@ app.config(['$routeProvider', function appConfig($routeProvider) {
 			templateUrl: 'app/HostQuestions/HostQuestions.html',
 			resolve: resolver
 		})
-		.when('/host-board', {
-			controller: 'HostBoardCtrl',
+		.when('/wizard', {
+			controller: 'WizardBoardCtrl',
 			templateUrl: 'app/GameBoard/GameBoard.html',
 			resolve: resolver
 		})		
@@ -27,7 +27,7 @@ app.config(['$routeProvider', function appConfig($routeProvider) {
 	;
 }]);
 
-app.questions = [
+var questions = [
 	{
 		text: "Name a University in Utah",
 		answers: [

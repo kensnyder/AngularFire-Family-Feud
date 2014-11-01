@@ -1,4 +1,5 @@
-app.controller("HostBoardCtrl", function HostBoardCtrl($scope, $firebase, questions) {
+app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, questions) {
+	$scope.boardType = 'board-type-wizard';
 	$scope.questions = questions;
 	var ref = new Firebase("https://brilliant-torch-8319.firebaseio.com/progress");
 	var sync = $firebase(ref);
@@ -32,8 +33,10 @@ app.controller("HostBoardCtrl", function HostBoardCtrl($scope, $firebase, questi
 			var multiplier = (newState == 'o' ? 1 : -1);
 			$scope.progress.scoreTop = $scope.progress.scoreTop + multiplier * $scope.question.answers[position].points;
 		}
-		$scope.progress.questionVisible = true;
 		$scope.progress.$save();
+	};
+	$scope.toggleQuestionVisibility = function toggleQuestionVisibility() {
+		$scope.progress.questionVisible = !$scope.progress.questionVisible;
 	};
 	$scope.pushScore = function pushScore(direction) {
 		$scope.progress['score' + direction] += $scope.progress.scoreTop;

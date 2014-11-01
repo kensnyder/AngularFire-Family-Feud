@@ -79,13 +79,23 @@ h1 {
 	height: 80px;
 	width: 468px;
 }
+.board-type-game .nav,
+.board-type-game .field-input,
+.board-type-game .push-points {
+	display: none;
+}
+.board-type-wizard .field-display {
+	display: none;
+}
 #GameBoard .question-text {
-	visibility: hidden;
 	font-size: 40px;
 	padding: 10px;
 	text-align: center;
 }
-#GameBoard .question-text.visible {
+#GameBoard.board-type-game .question-text {
+	visibility: hidden;
+}
+#GameBoard.board-type-game .question-text.visible {
 	visibility: visible;
 }
 #GameBoard .redx {
@@ -232,7 +242,19 @@ h1 {
 	border: 8px solid #A29FCC;
 	background-color: #16164E;	
 }
+.board-type-wizard .card,
 .card.flipped {
 	-webkit-transform: rotateX(-180deg);
 	transform: rotateX(-180deg);
+}
+.board-type-wizard .card:not(.flipped) .card-back {
+	background: #fff;
+	border-color: #aaa;
+	color: #777;
+}
+.board-type-wizard .card:not(.flipped) .card-points {
+	background: #fff;
+	border-left-color: #aaa;
+	text-shadow: none;
+	box-shadow: none;
 }

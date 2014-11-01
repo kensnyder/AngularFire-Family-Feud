@@ -1,33 +1,53 @@
-<div id="GameBoard">
+<div id="GameBoard" class="{{boardType}}">
+	<button class="nav" ng-click="nav(-1)">&laquo; prev question</button>
+	<button class="nav" ng-click="nav(1)">next question &raquo;</button>	
+	
 	<h1 class="question-text" ng-class="{visible:progress.questionVisible}">{{questions[progress.questionIndex].text}}</h1>
 
 	<div class="scores">
-		<div class="score score-side score-left">{{progress.scoreLeft}}</div>
-		<div class="score score-top">{{progress.scoreTop}}</div>	
-		<div class="score score-side score-right">{{progress.scoreRight}}</div>
-	</div>
-	
-	<div class="teams">
-		<div class="team team-a">{{progress.teamLeft}}</div>
-		<div class="team team-b">{{progress.teamRight}}</div>
+		<div class="score score-side score-left">
+			<span class="field-input"><input ng-model="progress.scoreLeft"></span>
+			<span class="field-display">{{progress.scoreLeft}}</span>
+		</div>
+		<div class="push-points push-points-left" ng-click="pushScore('Left')">&lt;</div>
+		<div class="score score-top">
+			<span class="field-input"><input ng-model="progress.scoreTop"></span>
+			<span class="field-display">{{progress.scoreTop}}</span>
+		</div>
+		<div class="push-points push-points-right" ng-click="pushScore('Right')">&gt;</div>
+		<div class="score score-side score-right">
+			<span class="field-input"><input ng-model="progress.scoreRight"></span>
+			<span class="field-display">{{progress.scoreRight}}</span>
+		</div>
 	</div>
 
+	<div class="teams">
+		<div class="team team-a">
+			<span class="field-input"><input ng-model="progress.teamLeft"></span>
+			<span class="field-display">{{progress.teamLeft}}</span>
+		</div>
+		<div class="team team-b">
+			<span class="field-input"><input ng-model="progress.teamRight"></span>
+			<span class="field-display">{{progress.teamRight}}</span>
+		</div>
+	</div>	
+	
 	<div class="redxs redxs-left">
-		<div class="redx" ng-class="{'redx-on':progress.redxLeft0}">X</div>
-		<div class="redx" ng-class="{'redx-on':progress.redxLeft1}">X</div>
-		<div class="redx" ng-class="{'redx-on':progress.redxLeft2}">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft0}" ng-click="toggleX('Left0')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft1}" ng-click="toggleX('Left1')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxLeft2}" ng-click="toggleX('Left2')">X</div>
 	</div>
 
 	<div class="redxs redxs-right">
-		<div class="redx" ng-class="{'redx-on':progress.redxRight0}">X</div>
-		<div class="redx" ng-class="{'redx-on':progress.redxRight1}">X</div>
-		<div class="redx" ng-class="{'redx-on':progress.redxRight2}">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight0}" ng-click="toggleX('Right0')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight1}" ng-click="toggleX('Right1')">X</div>
+		<div class="redx" ng-class="{'redx-on':progress.redxRight2}" ng-click="toggleX('Right2')">X</div>
 	</div>
 
 	<div class="answer-wrapper">
 
 		<div class="game-answers" ng-repeat="q in questions" ng-if="progress.questionIndex == $index">
-			<div class="card-container" ng-repeat="a in q.answers">
+			<div class="card-container" ng-repeat="a in q.answers" ng-click="flip($index)">
 				<div class="card" ng-class="{flipped:progress.flipped.charAt($index)=='o'}">
 					<div class="card-face card-front"><span class="answer-num">{{$index+1}}</span></div>
 					<div class="card-face card-back">
