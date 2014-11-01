@@ -19,15 +19,25 @@
 		<div class="redx" ng-class="{'redx-on':progress.redxRight2}">X</div>
 	</div>
 
-	<div class="answers">
+	<div class="answer-wrapper">
 
-		<div class="host-answers" ng-repeat="q in questions" ng-if="progress.questionIndex == $index">
+		<div class="game-answers" ng-repeat="q in questions" ng-if="progress.questionIndex == $index">
 			<div class="card-container" ng-repeat="a in q.answers">
 				<div class="card" ng-class="{flipped:progress.flipped.charAt($index)=='o'}">
 					<div class="card-face card-front"><span class="answer-num">{{$index+1}}</span></div>
-					<div class="card-face card-back">{{a.text}}</div>
+					<div class="card-face card-back">
+						<span class="card-text" ng-class="{
+							'sqeeze-50': a.text.length >= 40,
+							'sqeeze-40': a.text.length >= 35,
+							'sqeeze-30': a.text.length >= 30,
+							'sqeeze-20': a.text.length >= 25,
+							'sqeeze-10': a.text.length >= 20
+						}">{{a.text}}</span>
+						<span class="card-points">{{a.points}}</span>
+					</div>
 				</div>
-			</div>		
+			</div>
+			<div class="clear-both"></div>
 		</div>
 
 	</div>

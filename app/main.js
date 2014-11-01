@@ -42,15 +42,27 @@ app.questions = [
 			{
 				text: "Utah State University",
 				points: 10
-			},
-			{
-				text: "UVU",
-				points: 8
 			},			
 			{
-				text: "Weber State University",
+				text: "20 456789 1234567890",
 				points: 4
-			}		
+			},			
+			{
+				text: "25 456789 123456789 12345",
+				points: 2
+			},			
+			{
+				text: "30 456789 123456789 1234567890",
+				points: 2
+			},			
+			{
+				text: "35 456789 123456789 123456789 12345",
+				points: 2
+			},
+			{
+				text: "40 456789 123456789 123456789 1234567890",
+				points: 8
+			}					
 		]
 	},
 	{
@@ -75,7 +87,11 @@ app.questions = [
 			{
 				text: "Something",
 				points: 5				
-			}
+			},			
+			{
+				text: "Something",
+				points: 2
+			}	
 		]
 	}
 ];
