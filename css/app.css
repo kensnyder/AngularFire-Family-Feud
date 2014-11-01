@@ -35,25 +35,42 @@ h1 {
     text-shadow: 4px 1px 1px rgba(0, 0, 0, 0.3);
     width: 80px;
 }
-.redx {
-	font: 15px/100% Oswald;
-	color: #ccc;
-	border: 2px solid #ccc;
+#GameBoard .redxs {
+	position: absolute;
+	top: 254px;
+	left: 34px;
 }
-.redx-on {
+#GameBoard .redxs-right {
+	position: absolute;
+	top: 254px;
+	left: auto;
+	right: 22px;
+}
+#GameBoard .redx {
+	font: 40px/84% Oswald;
+	transform: scaleX(1.3);
+	display: inline-block;
+	color: #d00;
+	border: 5px solid #d00;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	margin-right: 17px;
+}
+/*.redx-on {
 	color: red;
 	border-color: red;
-}
+}*/
 #GameBoard {
 	background-color: #ddd;
 	padding: 10px;
 	width: 1024px;
 	height: 768px;
+	position: relative;
 }
-.game-answers {
+#GameBoard .game-answers {
 	position: absolute;
 	left: 12px;
-	bottom: 110px;
+	bottom: 20px;
 	width: 1000px;
 	height: 460px;
 }
@@ -64,6 +81,9 @@ h1 {
 }
 #GameBoard .question-text {
 	visibility: hidden;
+	font-size: 40px;
+	padding: 10px;
+	text-align: center;
 }
 #GameBoard .question-text.visible {
 	visibility: visible;
@@ -73,6 +93,51 @@ h1 {
 }
 #GameBoard .redx.redx-on {
 	visibility: visible;
+}
+#GameBoard .score {
+	position: absolute;
+	top: 110px;
+	left: 462px;
+	height: 70px;
+	width: 100px;
+	background-color: #203AAB;
+	border: 8px solid #918CC1;
+	border-right-width: 6px;
+	border-left-width: 6px;
+	font-size: 50px;
+	line-height: 70px;
+	text-align: center;
+	color: #fff;
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.7) inset;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+	transform: scaleX(1.5);
+	transform-origin: 50% 50%;
+}
+#GameBoard .score-side {
+	left: 53px;
+	top: 180px;
+	height: 60px;
+	width: 90px;
+	line-height: 60px;
+	font-size: 40px;
+	border-width: 4px;
+	border-right-width: 3px;
+	border-left-width: 3px;	
+}
+#GameBoard .score-right {
+	left: auto;
+	right: 58px;
+}
+#GameBoard .team {
+	font-size: 30px;
+	position: absolute;
+	top: 130px;
+	left: 30px;
+	color: #182F98;
+}
+#GameBoard .team-b {
+	right: 33px;
+	text-align: right;
 }
 .card-text {
 	display: block;
@@ -93,6 +158,7 @@ h1 {
 	text-align: center;
 	border-left: 8px solid #A29FCC;
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.7) inset;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 .sqeeze-10 { transform: scaleX(0.90); font-size: 38px; }
 .sqeeze-20 { transform: scaleX(0.81); font-size: 36px; }

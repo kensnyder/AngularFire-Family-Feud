@@ -17,6 +17,8 @@ app.controller("HostBoardCtrl", function HostBoardCtrl($scope, $firebase, questi
 		$scope.progress.redxRight1 = false;
 		$scope.progress.redxRight2 = false;
 		$scope.progress.questionVisible = false;
+		$scope.progress.teamLeft = $scope.progress.teamLeft || 'Team A';
+		$scope.progress.teamRight = $scope.progress.teamRight || 'Team B';
 		$scope.question = questions[$scope.progress.questionIndex];
 		$scope.progress.$save();
 	}

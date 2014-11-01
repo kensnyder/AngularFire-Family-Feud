@@ -9,6 +9,11 @@
 		<div class="score score-side score-right"><input ng-model="progress.scoreRight"></div>
 	</div>
 
+	<div class="teams">
+		<div class="team team-a"><input ng-model="progress.teamLeft"></div>
+		<div class="team team-b"><input ng-model="progress.teamRight"></div>
+	</div>	
+	
 	<div class="redxs redxs-left">
 		<div class="redx" ng-class="{'redx-on':progress.redxLeft0}" ng-click="toggleX('Left0')">X</div>
 		<div class="redx" ng-class="{'redx-on':progress.redxLeft1}" ng-click="toggleX('Left1')">X</div>

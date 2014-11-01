@@ -18,7 +18,7 @@ app.config(['$routeProvider', function appConfig($routeProvider) {
 		})
 		.when('/host-board', {
 			controller: 'HostBoardCtrl',
-			templateUrl: 'app/HostBoard/HostBoard.html',
+			templateUrl: 'app/GameBoard/GameBoard.html',
 			resolve: resolver
 		})		
 		.otherwise({
