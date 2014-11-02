@@ -374,3 +374,19 @@ h1 {
 .nav.disabled {
 	opacity: 0.2;
 }
+.host-question-wrapper {
+	height: 640px;
+	width: 320px;
+	box-sizing: border-box;
+	padding: 10px;
+	background-color: #eee;
+}
+.host-question-wrapper .intro {
+	font: 20px/1.2 Garamond;
+	color: #777;
+}
+.host-question-wrapper h1 {
+	margin-top: 30px;
+	font: 30px/1.2 Garamond;
+	color: #000;
+}

@@ -1,5 +1,6 @@
 <div class="host-question-wrapper">
 	<div class="host-question" ng-repeat="q in questions" ng-if="progress.questionIndex == $index">
-		{{q.text}}
+		<div class="intro">We surveyed 100 people; top {{q.answers.length}} answers on the board:</div>
+		<h1 class="host">{{q.text}}</h1>
 	</div>
 </div>
