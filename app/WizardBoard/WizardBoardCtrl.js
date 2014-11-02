@@ -24,6 +24,16 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 		$scope.progress.$save();
 	}
 	setupBoard();
+	function resetBoard() {
+		$scope.progress.flipped = '--------';
+		$scope.progress.redxLeft0 = false;
+		$scope.progress.redxLeft1 = false;
+		$scope.progress.redxLeft2 = false;
+		$scope.progress.redxRight0 = false;
+		$scope.progress.redxRight1 = false;
+		$scope.progress.redxRight2 = false;
+		$scope.progress.questionVisible = false;
+	}
 	
 	$scope.flip = function flip(position) {
 		var f = $scope.progress.flipped;
@@ -37,6 +47,7 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 	};
 	$scope.toggleQuestionVisibility = function toggleQuestionVisibility() {
 		$scope.progress.questionVisible = !$scope.progress.questionVisible;
+		$scope.progress.$save();
 	};
 	$scope.pushScore = function pushScore(direction) {
 		$scope.progress['score' + direction] += parseFloat($scope.progress.scoreTop);
@@ -56,11 +67,17 @@ app.controller("WizardBoardCtrl", function WizardBoardCtrl($scope, $firebase, qu
 			$scope.progress.questionIndex--;
 		}
 		else {
+			resetBoard();
 			setupBoard();
 		}
 	};
 	$scope.save = function save() {
 		$scope.progress.$save();
+	};
+	$scope.resetScores = function resetScores() {
+		$scope.progress.scoreTop = 0;
+		$scope.progress.scoreLeft = 0;
+		$scope.progress.scoreRight = 0;		
 	};
 
 });

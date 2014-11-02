@@ -65,7 +65,7 @@ h1 {
 	border-color: red;
 }
 #GameBoard {
-	background-color: #ddd;
+	background-color: #eee;
 	padding: 10px;
 	width: 1024px;
 	height: 768px;
@@ -92,9 +92,14 @@ h1 {
 	display: none;
 }
 #GameBoard .question-text {
-	font-size: 40px;
+	font-size: 44px;
 	padding: 10px;
 	text-align: center;
+}
+#GameBoard .question-text.two-line {
+	font-size: 40px;
+	line-height: 45px;
+	padding: 0 10px;
 }
 #GameBoard.board-type-game .question-text {
 	visibility: hidden;
@@ -104,6 +109,7 @@ h1 {
 }
 #GameBoard.board-type-wizard .question-text {
 	color: #999;
+	cursor: pointer;
 }
 #GameBoard.board-type-wizard .question-text.visible {
 	color: #000;
@@ -146,7 +152,7 @@ h1 {
 #GameBoard .score .field-input input {
 	background: transparent;
 	color: #fff;
-	font: 40px/40px Oswald;
+	font: 50px/50px Oswald;
 	border: none;
 	text-align: center;
 	width: 100px;
@@ -154,12 +160,14 @@ h1 {
 	padding: 0;
 	margin: 0;
 	vertical-align: top;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 #GameBoard .score .field-input input:hover,
 #GameBoard .score .field-input input:focus {
 	background: #fff;
 	color: #000;
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) inset;
+	text-shadow: none;
 }
 #GameBoard .score-side {
 	left: 53px;
@@ -194,11 +202,12 @@ h1 {
 	text-align: right;
 }
 #GameBoard .team input {
-	font: 25px/15px Oswald;
+	font: 30px/15px Oswald;
 	padding: 8px 12px;
 	border: 2px solid #bbb;
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) inset;
 	width: 260px;
+	margin-top: -10px;
 }
 #GameBoard .team input:hover,
 #GameBoard .team input:focus {
@@ -303,6 +312,7 @@ h1 {
 .card.flipped {
 	-webkit-transform: rotateX(-180deg);
 	transform: rotateX(-180deg);
+	cursor: pointer;
 }
 .board-type-wizard .card:not(.flipped) .card-back {
 	background: #fff;
@@ -341,21 +351,24 @@ h1 {
 .nav-area {
 	position: absolute;
 	top: 240px;
-	left: 220px;
+	left: 170px;
 	text-align: center;
-	width: 600px;
+	width: 700px;
 }
 .nav {
 	margin: 0 6px;
-	font: 30px/30px Oswald;
+	font: 20px/30px Oswald;
 	color: #bbb;
 	background-color: #fff;
 	border: 3px solid #bbb;	
-	padding: 10px 20px;
+	padding: 8px 12px;
 	border-radius: 7px;
-	cursor: pointer;
 }
-.nav:hover {
+.nav:not(.disabled):hover {
+	cursor: pointer;
 	color: #666;
 	border-color: #666;
+}
+.nav.disabled {
+	opacity: 0.2;
 }

@@ -29,7 +29,7 @@ app.config(['$routeProvider', function appConfig($routeProvider) {
 
 var questions = [
 	{
-		text: "Name a University in Utah",
+		text: "50 456789 123456789 123456789 123456789 1234567890",
 		answers: [
 			{
 				text: "University of Utah",
@@ -66,7 +66,7 @@ var questions = [
 		]
 	},
 	{
-		text: "Name something you forget to bring on vacation",
+		text: "40 456789 123456789 123456789 1234567890",
 		answers: [
 			{
 				text: "Toiletries",

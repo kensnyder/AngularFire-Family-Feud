@@ -1,6 +1,9 @@
 <div id="GameBoard" class="{{boardType}}">
 
-	<h1 class="question-text" ng-class="{visible:progress.questionVisible}" ng-click="toggleQuestionVisibility()">{{questions[progress.questionIndex].text}}</h1>
+	<h1 class="question-text" ng-class="{
+		'visible': progress.questionVisible,
+		'two-line': questions[progress.questionIndex].text.length > 40
+	}" ng-click="toggleQuestionVisibility()">{{questions[progress.questionIndex].text}}</h1>
 
 	<div class="scores">
 		<div class="score score-side score-left">
@@ -43,8 +46,9 @@
 	</div>
 
 	<div class="nav-area">		
-		<button class="nav nav-left" ng-click="nav(-1)">&laquo; prev question</button>
-		<button class="nav nav-right" ng-click="nav(1)">next question &raquo;</button>	
+		<button class="nav nav-left" ng-class="{disabled:progress.questionIndex===0}" ng-click="nav(-1)">&laquo; prev question</button>
+		<button class="nav nav-center" ng-click="resetScores()">reset scores</button>
+		<button class="nav nav-right" ng-class="{disabled:progress.questionIndex===questions.length-1}" ng-click="nav(1)">next question &raquo;</button>	
 	</div>	
 	
 	<div class="answer-wrapper">
