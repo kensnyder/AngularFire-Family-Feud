@@ -9,72 +9,28 @@ h1 {
 .clear-both {
 	clear: both;
 }
-.host-answer {
-	margin: 20px;
-	background-color: #eee;
-	color: #888;	
-	font-size: 40px;
-	line-height: 100px;
-	text-align: center;
-	border-radius: 6px;
-	width: 640px;
-	height: 100px;
-}
-.host-answer.flipped {
-	background-color: #333;
-	color: #eee;
-}
-.answer-num {
-    background-color: #2c318b;
-    border-radius: 50%;
-    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.3) inset;
-    display: inline-block;
-    height: 60px;
-    line-height: 60px;
-    margin-top: 0;
-    text-shadow: 4px 1px 1px rgba(0, 0, 0, 0.3);
-    width: 80px;
-}
-#GameBoard .redxs {
-	position: absolute;
-	top: 254px;
-	left: 34px;
-}
-#GameBoard .redxs-right {
-	position: absolute;
-	top: 254px;
-	left: auto;
-	right: 22px;
-}
-#GameBoard .redx {
-	font: 40px/84% Oswald;
-	-webkit-transform: scaleX(1.3);
-	transform: scaleX(1.3);
-	display: inline-block;
-	color: #d00;
-	border: 5px solid #d00;
-	border-left-width: 4px;
-	border-right-width: 4px;
-	margin-right: 17px;
-}
-.redx:hover {
-	cursor: pointer;
-}
-.redx-on {
-	color: red;
-	border-color: red;
-}
 #GameBoard {
 	background-color: #eee;
 	padding: 10px;
 	width: 1024px;
 	height: 768px;
 	position: relative;
+	box-sizing: border-box;
+}
+#GameBoard.board-type-game {
+	background-image: url(../img/logo.png);
+	background-repeat: no-repeat;
+	background-size: 576px 320px;
+	background-position: 50% 0;
+}
+#GameBoard.board-type-game.question-visible {
+	background-size: 182px 100px;
+	background-position: 50% 203px;
 }
 #GameBoard .game-answers {
 	position: absolute;
-	left: 12px;
-	bottom: 20px;
+	left: 4px;
+	bottom: 13px;
 	width: 1000px;
 	height: 460px;
 }
@@ -104,7 +60,7 @@ h1 {
 #GameBoard.board-type-game .question-text {
 	visibility: hidden;
 }
-#GameBoard.board-type-game .question-text.visible {
+#GameBoard.board-type-game.question-visible .question-text {
 	visibility: visible;
 }
 #GameBoard.board-type-wizard .question-text {
@@ -131,7 +87,7 @@ h1 {
 #GameBoard .score {
 	position: absolute;
 	top: 110px;
-	left: 462px;
+	left: 455px;
 	height: 70px;
 	width: 100px;
 	background-color: #203AAB;
@@ -148,6 +104,12 @@ h1 {
 	transform: scaleX(1.5);
 	-webkit-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
+}
+#GameBoard.board-type-game .score-top {
+	display: none;
+}
+#GameBoard.board-type-game.question-visible .score-top {
+	display: block;
 }
 #GameBoard .score .field-input input {
 	background: transparent;
@@ -170,7 +132,7 @@ h1 {
 	text-shadow: none;
 }
 #GameBoard .score-side {
-	left: 53px;
+	left: 46px;
 	top: 180px;
 	height: 60px;
 	width: 90px;
@@ -187,7 +149,7 @@ h1 {
 }
 #GameBoard .score-right {
 	left: auto;
-	right: 58px;
+	right: 46px;
 }
 #GameBoard .team {
 	font-size: 30px;
@@ -207,7 +169,7 @@ h1 {
 	border: 2px solid #bbb;
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) inset;
 	width: 260px;
-	margin-top: -10px;
+	margin: -1px -11px 0 -9px;
 }
 #GameBoard .team input:hover,
 #GameBoard .team input:focus {
@@ -215,6 +177,35 @@ h1 {
 }
 #GameBoard .team-b input {
 	text-align: right;
+}
+#GameBoard .redxs {
+	position: absolute;
+	top: 254px;
+	left: 27px;
+}
+#GameBoard .redxs-right {
+	position: absolute;
+	top: 254px;
+	left: auto;
+	right: 19px;
+}
+#GameBoard .redx {
+	font: 40px/84% Oswald;
+	-webkit-transform: scaleX(1.3);
+	transform: scaleX(1.3);
+	display: inline-block;
+	color: #d00;
+	border: 5px solid #d00;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	margin-right: 17px;
+}
+.redx:hover {
+	cursor: pointer;
+}
+.redx-on {
+	color: red;
+	border-color: red;
 }
 .card-text {
 	display: block;
@@ -325,10 +316,21 @@ h1 {
 	text-shadow: none;
 	box-shadow: none;
 }
+.answer-num {
+    background-color: #2c318b;
+    border-radius: 50%;
+    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.3) inset;
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 0;
+    text-shadow: 4px 1px 1px rgba(0, 0, 0, 0.3);
+    width: 80px;
+}
 .push-points {
 	position: absolute;
 	top: 115px;
-	left: 350px;
+	left: 343px;
 	font-size: 60px;
 	line-height: 55px;
 	color: #bbb;
@@ -346,12 +348,12 @@ h1 {
 	border-color: #666;
 }
 .push-points-right {
-	left: 610px;
+	left: 603px;
 }
 .nav-area {
 	position: absolute;
 	top: 240px;
-	left: 170px;
+	left: 162px;
 	text-align: center;
 	width: 700px;
 }

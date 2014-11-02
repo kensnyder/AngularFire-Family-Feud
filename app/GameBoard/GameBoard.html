@@ -1,7 +1,8 @@
-<div id="GameBoard" class="{{boardType}}">
+<div id="GameBoard" class="{{boardType}}" ng-class="{
+		'question-visible': progress.questionVisible
+	}">
 
-	<h1 class="question-text" ng-class="{
-		'visible': progress.questionVisible,
+	<h1 class="question-text" ng-class="{		
 		'two-line': questions[progress.questionIndex].text.length > 40
 	}" ng-click="toggleQuestionVisibility()">{{questions[progress.questionIndex].text}}</h1>
 
